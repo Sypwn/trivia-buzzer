@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website</title>
+  <style>
+    #output_div {
+      width: 200px;
+      height: 200px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <h1>Guest Page</h1>
+  <form id="name_form">
+    <input type="text" id="name_input" autocomplete="off">
+    <button>Set</button>
+  </form>
+  <form id="buzz_form">
+    <button>Buzz</button>
+  </form>
+  <div id="output_div"></div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/dist/client.js"></script>
+</body>
+</html>
