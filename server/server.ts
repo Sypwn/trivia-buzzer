@@ -103,6 +103,9 @@ server.listen(3000, () => {
     console.log('List of currently connected users:');
     for (const socketId in socketMap) {
       console.log(socketMap[socketId].name);
+      socketMap[socketId].buzz_time = 0;
+      socketMap[socketId].ping_time = 0;
     }
+    io.emit('buzz_list', []);
   });
 });

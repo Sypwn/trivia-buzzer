@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Website</title>
+  <title>Client</title>
   <style>
-    #output_div {
-      width: 200px;
+    #center_div {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 100px; /* Add some space between name_form and buzz_form */
+    }
+
+    #buzz_form button {
+      width: 300px;
       height: 200px;
-      border: 1px solid black;
+      font-size: 40px;
+    }
+
+    #output_div {
+      width: 300px;
+      font-size: 20px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <h1>Guest Page</h1>
   <form id="name_form">
+    <p1>Enter name:</p1>
     <input type="text" id="name_input" autocomplete="off">
-    <button>Set</button>
+    <button>Submit</button>
   </form>
-  <form id="buzz_form">
-    <button>Buzz</button>
-  </form>
-  <div id="output_div"></div>
+  <div id="center_div">
+    <form id="buzz_form">
+        <button>Buzz</button>
+    </form>
+    <div id="output_div"></div>
+</div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/dist/client.js"></script>
 </body>

@@ -7,11 +7,12 @@ const socket = io();
 // Get references to the HTML elements with the specified IDs
 const name_form = document.getElementById('name_form');
 const name_input = document.getElementById('name_input') as HTMLInputElement;
+const center_div = document.getElementById('center_div');
 const buzz_form = document.getElementById('buzz_form');
 const output_div = document.getElementById('output_div');
 
 // Check if all required HTML elements were found
-if (name_form && name_input && buzz_form && output_div) {
+if (name_form && name_input && center_div && buzz_form && output_div) {
     // Add an event listener to the form submit event
     name_form.addEventListener('submit', function(e) {
         // Prevent the default form submission behavior
@@ -20,8 +21,8 @@ if (name_form && name_input && buzz_form && output_div) {
         // Emit a 'name' event to the server with the input value
         socket.emit('name', name_input.value);
 
-        // Clear the input field after emitting the 'name' event
-        name_input.value = '';
+        name_form.style.display = 'none';
+        center_div.style.display = 'flex';
     });
 
     // Add an event listener to the form submit event
