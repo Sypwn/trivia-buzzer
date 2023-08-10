@@ -1,0 +1,84 @@
+.color-selector {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.hidden-radio {
+  display: none;
+}
+
+.color-box {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  cursor: pointer;
+  border: 5px solid var(--background-color);
+  transition: border-color 0.3s;
+}
+
+.hidden-radio:checked + .color-box {
+  border-color: transparent;
+}
+
+#buzz_button {
+  color: white;
+  width: 300px;
+  height: 200px;
+  font-size: 50px;
+  margin-top: 60px;
+  margin-bottom: 50px;
+  border-style: solid;
+  border-width: 7px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-family: 'Montserrat-Bold', sans-serif;
+  /*background-color: #e9e9ed;*/
+  /*background-color: #d0d0d7;*/
+}
+
+.red-button {
+  border-color: var(--red-player-color);
+  background-color: color-mix(in srgb-linear, var(--red-player-color) 10%, var(--background-color))
+}
+
+.red-button:hover {
+  background-color: color-mix(in srgb-linear, var(--red-player-color) 20%, var(--background-color))
+}
+
+.yellow-button {
+  border-color: var(--yellow-player-color);
+  background-color: color-mix(in srgb-linear, var(--yellow-player-color) 10%, var(--background-color))
+}
+
+.yellow-button:hover {
+  background-color: color-mix(in srgb-linear, var(--yellow-player-color) 20%, var(--background-color))
+}
+
+.green-button {
+  border-color: var(--green-player-color);
+  background-color: color-mix(in srgb-linear, var(--green-player-color) 10%, var(--background-color))
+}
+
+.green-button:hover {
+  background-color: color-mix(in srgb-linear, var(--green-player-color) 20%, var(--background-color))
+}
+
+.blue-button {
+  border-color: var(--blue-player-color);
+  background-color: color-mix(in srgb-linear, var(--blue-player-color) 10%, var(--background-color))
+}
+
+.blue-button:hover {
+  background-color: color-mix(in srgb-linear, var(--blue-player-color) 20%, var(--background-color))
+}
+
+.purple-button {
+  border-color: var(--purple-player-color);
+  background-color: color-mix(in srgb-linear, var(--purple-player-color) 10%, var(--background-color))
+}
+
+.purple-button:hover {
+  background-color: color-mix(in srgb-linear, var(--purple-player-color) 20%, var(--background-color))
+}

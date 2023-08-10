@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Host</title>
+    <link rel="stylesheet" href="/shared.css">
+    <link rel="stylesheet" href="host.css">
+  </head>
+  <body id="body">
+    <form id="code_form">
+      <p1>Enter code:</p1>
+      <input type="text" id="code_input" autocomplete="off">
+      <button>Submit</button>
+    </form>
+    <div id="main_div" style="display: none;">
+      <div id="events_div"></div>
+      <div id="center_div">
+        <button id="reset_button">Reset</button>
+        <div id="buzz_list_div">
+          <p id="none_player" style="display: none;"></p>
+          <p id="red_player" class="player red-player" style="display: none;">Red Player</p>
+          <p id="yellow_player" class="player yellow-player" style="display: none;">Yellow Player</p>
+          <p id="green_player" class="player green-player" style="display: none;">Green Player</p>
+          <p id="blue_player" class="player blue-player" style="display: none;">Blue Player</p>
+          <p id="purple_player" class="player purple-player" style="display: none;">Purple Player</p>
+        </div>
+      </div>
+    </div>
+    <div id="disconnected" style="display: none;">
+      <h2>Connection Error. Please reload the page.</h2>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="dist/host.js"></script>
+  </body>
+</html>

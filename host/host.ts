@@ -18,7 +18,6 @@ function getElement(element_id: string) {
 }
 
 // Get references to the HTML elements with the specified IDs
-const color_radios = document.querySelectorAll('[name="color"]') as NodeListOf<HTMLInputElement>;
 const buzz_list_div = getElement('buzz_list_div');
 const red_player = getElement('red_player');
 const yellow_player = getElement('yellow_player');
@@ -90,43 +89,22 @@ function buzzList(buzzers: Buzzer[]) {
   }
 }
 
-
-function getSelectedColor(): string | null {
-  for (let i = 0; i < color_radios.length; i++) {
-    if (color_radios[i].checked) {
-      return color_radios[i].value;
-    }
-  }
-  return null; // return null if no color is selected
-}
-
 // Add an event listener to the form submit event
-getElement('name_form').addEventListener('submit', function(e) {
-  // Prevent the default form submission behavior
-  e.preventDefault(); 
+getElement('code_form')?.addEventListener('submit', function(e) {
+    // Prevent the default form submission behavior
+    e.preventDefault(); 
 
-  // Get the selected color
-  const selectedColor = getSelectedColor();
-
-  socket.emit('name', {
-    name: (getElement('name_input') as HTMLInputElement).value,
-    color: selectedColor
-  });
+    // Emit a 'code' event to the server with the input value
+    socket.emit('code', ((getElement('code_input') as HTMLInputElement)).value);
 });
 
-socket.on('name_error', (error: string) => {
-  getElement('name_error').textContent = error;
-});
-
-socket.on('name_ok', (data: Buzzer) => {
-  getElement('buzz_button').className = data.color + '-button';
-  getElement('name_form').style.display = 'none';
+socket.on('code_ok', () => {
+  getElement('code_form').style.display = 'none';
   getElement('main_div').style.display = 'block';
-  document.title = data.name;
 });
 
-getElement('buzz_button').addEventListener('click', function(e) {
-  socket.emit('buzz');
+getElement('reset_button')?.addEventListener('click', () => {
+  socket.emit('reset');
 });
 
 socket.on('reset', () => {
@@ -141,14 +119,9 @@ socket.on('buzz_list', (buzzers: Buzzer[]) => {
   buzzList(buzzers);
 });
 
-// When we receive a ping, immediately reply with a pong
-socket.on('ping', () => {
-  socket.emit('pong');
-});
-
 socket.on('disconnect', () => {
   socket.io.opts.reconnection = false;
-  getElement('name_form').style.display = 'none';
+  getElement('code_form').style.display = 'none';
   getElement('main_div').style.display = 'none';
   getElement('disconnected').style.display = 'block';
 });

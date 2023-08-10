@@ -4,6 +4,7 @@ node_modules/
 # TypeScript build output
 client/dist/
 server/dist/
+host/dist/
 
 # IDE/Editor folders
 .vscode/

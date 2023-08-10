@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:client": "tsc -p client"
+    "build:client": "tsc -p client",
+    "build:host": "tsc -p host",
+    "start": "npm run build:client && npm run build:host && ts-node server\\server.ts"
   },
   "keywords": [],
   "author": "",

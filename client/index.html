@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Client</title>
-  <style>
-    #center_div {
-      display: none;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      margin-top: 100px; /* Add some space between name_form and buzz_form */
-    }
-
-    #buzz_form button {
-      width: 300px;
-      height: 200px;
-      font-size: 40px;
-    }
-
-    #output_div {
-      width: 300px;
-      font-size: 20px;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  <form id="name_form">
-    <p1>Enter name:</p1>
-    <input type="text" id="name_input" autocomplete="off">
-    <button>Submit</button>
-  </form>
-  <div id="center_div">
-    <form id="buzz_form">
-        <button>Buzz</button>
+  <head>
+    <title>Client</title>
+    <link rel="stylesheet" href="/shared.css">
+    <link rel="stylesheet" href="client.css">
+  </head>
+  <body id="body">
+    <form id="name_form">
+      <div class="color-selector">
+        Select color:
+        <input type="radio" id="red" name="color" class="hidden-radio" value="red">
+        <label for="red" class="color-box" style="background-color: var(--red-player-color);"></label>
+        <input type="radio" id="yellow" name="color" class="hidden-radio" value="yellow">
+        <label for="yellow" class="color-box" style="background-color: var(--yellow-player-color);"></label>
+        <input type="radio" id="green" name="color" class="hidden-radio" value="green">
+        <label for="green" class="color-box" style="background-color: var(--green-player-color);"></label>
+        <input type="radio" id="blue" name="color" class="hidden-radio" value="blue">
+        <label for="blue" class="color-box" style="background-color: var(--blue-player-color);"></label>
+        <input type="radio" id="purple" name="color" class="hidden-radio" value="purple">
+        <label for="purple" class="color-box" style="background-color: var(--purple-player-color);"></label>
+      </div>   
+      Enter name:
+      <input type="text" id="name_input" autocomplete="off">
+      <button>Submit</button>
+      <p id="name_error"></p>
     </form>
-    <div id="output_div"></div>
-</div>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/dist/client.js"></script>
-</body>
+    <div id="main_div" style="display: none;">
+      <div id="center_div">
+        <button id="buzz_button">Buzz</button>
+        <div id="buzz_list_div">
+          <p id="none_player" style="display: none;"></p>
+          <p id="red_player" class="player red-player" style="display: none;">Red Player</p>
+          <p id="yellow_player" class="player yellow-player" style="display: none;">Yellow Player</p>
+          <p id="green_player" class="player green-player" style="display: none;">Green Player</p>
+          <p id="blue_player" class="player blue-player" style="display: none;">Blue Player</p>
+          <p id="purple_player" class="player purple-player" style="display: none;">Purple Player</p>
+        </div>
+      </div>
+    </div>
+    <div id="disconnected" style="display: none;">
+      <h2>Connection Error. Please reload the page.</h2>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="dist/client.js"></script>
+  </body>
 </html>
