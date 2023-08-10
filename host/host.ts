@@ -113,6 +113,7 @@ socket.on('reset', () => {
 
 socket.on('buzz_single', (buzzer: Buzzer) => {
   buzzPlayer(buzzer);
+  (new Audio('/bell.mp3')).play();
 });
 
 socket.on('buzz_list', (buzzers: Buzzer[]) => {
