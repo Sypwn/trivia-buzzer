@@ -2,7 +2,7 @@
   display: none;
   width: 400px;
   height: 800px;
-  border: 3px groove white;
+  border: 3px groove var(--text-color);
   float: left;
 }
 
@@ -18,10 +18,10 @@
   border-radius: 7px;
   cursor: pointer;
   font-family: 'Montserrat-Bold', sans-serif;
-  border-color: #e9e9ed;
-  background-color: color-mix(in srgb-linear, #e9e9ed 10%, var(--background-color))
+  border-color: var(--text-color);
+  background-color: color-mix(in srgb-linear, var(--text-color) 10%, var(--background-color))
 }
 
 #reset_button:hover {
-  background-color: color-mix(in srgb-linear, #e9e9ed 20%, var(--background-color))
+  background-color: color-mix(in srgb-linear, var(--text-color) 20%, var(--background-color))
 }

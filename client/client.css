@@ -23,7 +23,7 @@
 }
 
 #buzz_button {
-  color: white;
+  color: var(--text-color);
   width: 300px;
   height: 200px;
   font-size: 50px;
@@ -34,8 +34,6 @@
   border-radius: 7px;
   cursor: pointer;
   font-family: 'Montserrat-Bold', sans-serif;
-  /*background-color: #e9e9ed;*/
-  /*background-color: #d0d0d7;*/
 }
 
 .red-button {

@@ -1,5 +1,6 @@
 :root {
   --background-color: #252730;
+  --text-color: #e9e9ed;
   --red-player-color: #ff2222;
   --yellow-player-color: #ffff00;
   --green-player-color: #00ff00;
@@ -16,7 +17,7 @@
   
 #body {
   background-color: var(--background-color);
-  color: White;
+  color:  var(--text-color);
   font-family: 'Montserrat-Bold', sans-serif;
 }
 
