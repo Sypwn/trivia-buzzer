@@ -18,10 +18,14 @@
   border-radius: 7px;
   cursor: pointer;
   font-family: 'Montserrat-Bold', sans-serif;
-  border-color: var(--text-color);
-  background-color: color-mix(in srgb-linear, var(--text-color) 10%, var(--background-color))
+  border-color: var(--current-player-color);
+  background-color: color-mix(in srgb-linear, var(--current-player-color) 10%, var(--background-color))
 }
 
 #reset_button:hover {
-  background-color: color-mix(in srgb-linear, var(--text-color) 20%, var(--background-color))
+  background-color: color-mix(in srgb-linear, var(--current-player-color) 20%, var(--background-color))
+}
+
+#reset_button:active {
+  background-color: color-mix(in srgb-linear, var(--current-player-color) 5%, var(--background-color))
 }

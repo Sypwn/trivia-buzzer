@@ -135,9 +135,9 @@ io.on('connection', (socket) => {
     const buzzers = getBuzzedUsers(socketMap);
     // Update all clients with current buzz list
     io.emit('buzz_list', buzzers);
-    for (const buzzer of buzzers) {
-      console.log("  " + buzzer.name + " : " + buzzer.color);
-    }
+    //for (const buzzer of buzzers) {
+    //  console.log("  " + buzzer.name + " : " + buzzer.color);
+    //}
     
   });
 

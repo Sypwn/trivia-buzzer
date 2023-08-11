@@ -119,7 +119,7 @@ socket.on('name_error', (error: string) => {
 });
 
 socket.on('name_ok', (data: Buzzer) => {
-  getElement('buzz_button').className = data.color + '-button';
+  document.documentElement.style.setProperty('--current-player-color', 'var(--' + data.color + '-player-color)');
   getElement('name_form').style.display = 'none';
   getElement('main_div').style.display = 'block';
   document.title = data.name;

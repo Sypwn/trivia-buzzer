@@ -34,49 +34,14 @@
   border-radius: 7px;
   cursor: pointer;
   font-family: 'Montserrat-Bold', sans-serif;
+  border-color: var(--current-player-color);
+  background-color: color-mix(in srgb-linear, var(--current-player-color) 10%, var(--background-color))
 }
 
-.red-button {
-  border-color: var(--red-player-color);
-  background-color: color-mix(in srgb-linear, var(--red-player-color) 10%, var(--background-color))
+#buzz_button:hover {
+  background-color: color-mix(in srgb-linear, var(--current-player-color) 20%, var(--background-color))
 }
 
-.red-button:hover {
-  background-color: color-mix(in srgb-linear, var(--red-player-color) 20%, var(--background-color))
-}
-
-.yellow-button {
-  border-color: var(--yellow-player-color);
-  background-color: color-mix(in srgb-linear, var(--yellow-player-color) 10%, var(--background-color))
-}
-
-.yellow-button:hover {
-  background-color: color-mix(in srgb-linear, var(--yellow-player-color) 20%, var(--background-color))
-}
-
-.green-button {
-  border-color: var(--green-player-color);
-  background-color: color-mix(in srgb-linear, var(--green-player-color) 10%, var(--background-color))
-}
-
-.green-button:hover {
-  background-color: color-mix(in srgb-linear, var(--green-player-color) 20%, var(--background-color))
-}
-
-.blue-button {
-  border-color: var(--blue-player-color);
-  background-color: color-mix(in srgb-linear, var(--blue-player-color) 10%, var(--background-color))
-}
-
-.blue-button:hover {
-  background-color: color-mix(in srgb-linear, var(--blue-player-color) 20%, var(--background-color))
-}
-
-.purple-button {
-  border-color: var(--purple-player-color);
-  background-color: color-mix(in srgb-linear, var(--purple-player-color) 10%, var(--background-color))
-}
-
-.purple-button:hover {
-  background-color: color-mix(in srgb-linear, var(--purple-player-color) 20%, var(--background-color))
+#buzz_button:active {
+  background-color: color-mix(in srgb-linear, var(--current-player-color) 5%, var(--background-color))
 }

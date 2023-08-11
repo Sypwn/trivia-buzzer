@@ -6,6 +6,7 @@
   --green-player-color: #00ff00;
   --blue-player-color: #2266ff;
   --purple-player-color: #8822ff;
+  --current-player-color: var(--text-color);
 }
 
 @font-face {
