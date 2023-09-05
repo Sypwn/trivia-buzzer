@@ -8,7 +8,6 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 app.use(express.static(path.join(__dirname, '../client')));
-app.use('/host', express.static(path.join(__dirname, '../host')));
 
 interface User {
   name: string;
@@ -56,6 +55,14 @@ io.on('connection', (socket) => {
 
   // Event listener for 'name' events received from the connected clients
   socket.on('name', (data) => {
+    if (data.name.toLowerCase() === 'viewer')
+    {
+      console.log(socketMap[socket.id].name + ' is now a viewer');
+      socketMap[socket.id].name = 'viewer';
+      socketMap[socket.id].color = null;
+      io.to(socket.id).emit('name_ok', {name: 'viewer', color: null});
+      return;
+    }
 
     // Verify a name was provided
     if (!data.name || (data.name.trim() == "")){
@@ -132,9 +139,8 @@ io.on('connection', (socket) => {
     // Clear the ping time
     socketMap[socket.id].ping_time = 0;
 
-    const buzzers = getBuzzedUsers(socketMap);
     // Update all clients with current buzz list
-    io.emit('buzz_list', buzzers);
+    io.emit('buzz_list', getBuzzedUsers(socketMap));
     //for (const buzzer of buzzers) {
     //  console.log("  " + buzzer.name + " : " + buzzer.color);
     //}

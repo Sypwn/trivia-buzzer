@@ -3,7 +3,7 @@ declare const io: any;
 
 interface Buzzer {
   name: string;
-  color: string;
+  color: string | null;
 }
 
 // Connect to the WebSocket server using 'io()' and assign it to 'socket'
@@ -104,7 +104,7 @@ getElement('name_form').addEventListener('submit', (e) => {
   e.preventDefault();
 
   let name = (getElement('name_input') as HTMLInputElement).value;
-  if (name.toLowerCase() === "host") {
+  if (name.toLowerCase() === 'host') {
     getElement('name_form').style.display = 'none';
     getElement('buzz_button').style.display = 'none';
     getElement('code_form').style.display = 'block';
@@ -123,10 +123,16 @@ socket.on('name_error', (error: string) => {
 });
 
 socket.on('name_ok', (data: Buzzer) => {
-  document.documentElement.style.setProperty('--current-player-color', 'var(--' + data.color + '-player-color)');
+  if (data.name === 'viewer'){
+    getElement('buzz_button').style.display = 'none';
+    getElement('buzz_list_div').style.marginTop = '150px';
+    document.title = 'Viewer';
+  } else {
+    document.documentElement.style.setProperty('--current-player-color', 'var(--' + data.color + '-player-color)');
+    document.title = data.name;
+  }
   getElement('name_form').style.display = 'none';
   getElement('main_div').style.display = 'block';
-  document.title = data.name;
 });
 
 getElement('code_form')?.addEventListener('submit', (e) => {
