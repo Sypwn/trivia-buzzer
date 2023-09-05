@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Client</title>
-    <link rel="stylesheet" href="/shared.css">
     <link rel="stylesheet" href="client.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
@@ -22,13 +21,19 @@
         <label for="purple" class="color-box" style="background-color: var(--purple-player-color);"></label>
       </div>   
       Enter name:
-      <input type="text" id="name_input" autocomplete="off">
+      <input type="text" id="name_input">
       <button>Submit</button>
       <p id="name_error"></p>
+    </form>
+    <form id="code_form" style="display: none;">
+      <p1>Enter code:</p1>
+      <input type="text" id="code_input" autocomplete="off">
+      <button>Submit</button>
     </form>
     <div id="main_div" style="display: none;">
       <div id="center_div">
         <button id="buzz_button">Buzz</button>
+        <button id="reset_button" style="display: none;">Reset</button>
         <div id="buzz_list_div">
           <p id="none_player" style="display: none;"></p>
           <p id="red_player" class="player red-player" style="display: none;">Red Player</p>

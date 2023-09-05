@@ -90,7 +90,6 @@ function buzzList(buzzers: Buzzer[]) {
   }
 }
 
-
 function getSelectedColor(): string | null {
   for (let i = 0; i < color_radios.length; i++) {
     if (color_radios[i].checked) {
@@ -100,18 +99,23 @@ function getSelectedColor(): string | null {
   return null; // return null if no color is selected
 }
 
-// Add an event listener to the form submit event
-getElement('name_form').addEventListener('submit', function(e) {
+getElement('name_form').addEventListener('submit', (e) => {
   // Prevent the default form submission behavior
-  e.preventDefault(); 
+  e.preventDefault();
 
-  // Get the selected color
-  const selectedColor = getSelectedColor();
-
-  socket.emit('name', {
-    name: (getElement('name_input') as HTMLInputElement).value,
-    color: selectedColor
-  });
+  let name = (getElement('name_input') as HTMLInputElement).value;
+  if (name.toLowerCase() === "host") {
+    getElement('name_form').style.display = 'none';
+    getElement('buzz_button').style.display = 'none';
+    getElement('code_form').style.display = 'block';
+    getElement('reset_button').style.display = 'block';
+    document.title = "Host";
+  } else {
+    socket.emit('name', {
+      name: name,
+      color: getSelectedColor()
+    });
+  }
 });
 
 socket.on('name_error', (error: string) => {
@@ -125,8 +129,24 @@ socket.on('name_ok', (data: Buzzer) => {
   document.title = data.name;
 });
 
-getElement('buzz_button').addEventListener('click', function(e) {
+getElement('code_form')?.addEventListener('submit', (e) => {
+  // Prevent the default form submission behavior
+  e.preventDefault(); 
+
+  socket.emit('code', ((getElement('code_input') as HTMLInputElement)).value);
+});
+
+socket.on('code_ok', () => {
+getElement('code_form').style.display = 'none';
+getElement('main_div').style.display = 'block';
+});
+
+getElement('buzz_button').addEventListener('click', () => {
   socket.emit('buzz');
+});
+
+getElement('reset_button')?.addEventListener('click', () => {
+  socket.emit('reset');
 });
 
 socket.on('reset', () => {
@@ -135,7 +155,7 @@ socket.on('reset', () => {
 
 socket.on('buzz_single', (buzzer: Buzzer) => {
   buzzPlayer(buzzer);
-  (new Audio('/bell.mp3')).play();
+  (new Audio('bell.mp3')).play();
 });
 
 socket.on('buzz_list', (buzzers: Buzzer[]) => {
@@ -150,6 +170,7 @@ socket.on('ping', () => {
 socket.on('disconnect', () => {
   socket.io.opts.reconnection = false;
   getElement('name_form').style.display = 'none';
+  getElement('code_form').style.display = 'none';
   getElement('main_div').style.display = 'none';
   getElement('disconnected').style.display = 'block';
 });
